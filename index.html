@@ -40,11 +40,13 @@
       scroll-behavior: smooth;
     }
 
-    body {
+    html, body {
       background: var(--obsidian);
       color: var(--ivory);
       font-family: 'Jost', sans-serif;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
       scrollbar-width: thin;
       scrollbar-color: var(--gold-dim) transparent;
     }
@@ -1036,7 +1038,7 @@
         transform: translateY(-50%) !important;
       }
 
-      .brand-strip {
+      #brand-strip {
         flex-wrap: wrap;
       }
 
