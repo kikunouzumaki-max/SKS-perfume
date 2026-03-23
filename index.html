@@ -143,15 +143,21 @@
     }
 
     .nav-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       font-size: 32px; /* Adjusted larger */
       color: var(--gold);
       letter-spacing: 0.4em;
       text-align: center;
       transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-      margin-right: -0.4em; /* Compensate for letter-spacing */
+      padding-left: 0.4em; /* Compensate for letter-spacing to center optically */
+      z-index: 10;
+      white-space: nowrap;
     }
     .nav-logo:hover {
-      transform: scale(1.05);
+      transform: translate(-50%, -50%) scale(1.05);
     }
 
     .nav-links {
@@ -1002,14 +1008,18 @@
         padding: 16px 20px;
       }
       .nav-logo {
-        position: static !important;
-        transform: none !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
         font-size: 24px !important;
-        margin: 0 auto !important;
-        flex-shrink: 0;
+        margin: 0 !important;
+        padding-left: 0.4em !important;
+        white-space: nowrap !important;
+        z-index: 10 !important;
       }
       .nav-logo:hover {
-        transform: none !important;
+        transform: translate(-50%, -50%) scale(1.05) !important;
       }
       
       .nav-links,
