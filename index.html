@@ -665,6 +665,47 @@
       color: white;
     }
 
+    /* ---- ABOUT SCROLL SECTION ---- */
+    #about {
+      width: 100%;
+      background: var(--obsidian);
+      z-index: 5;
+    }
+    #about-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-text {
+      position: absolute;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(30px);
+      will-change: opacity, transform;
+    }
+    .about-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      z-index: 1;
+      will-change: opacity, transform;
+      mix-blend-mode: screen;
+    }
+    #about-img-alchemy {
+      object-fit: contain;
+      transform: scale(1.1);
+    }
+
     /* Feature Banner */
     .feature {
       display: flex;
@@ -686,6 +727,20 @@
       align-items: center;
       text-align: center;
       position: relative;
+    }
+    
+    .feat-flagship {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+    }
+    
+    .feat-price {
+      color: var(--gold-dim);
+      font-size: 20px;
     }
 
     /* Footer */
@@ -1097,6 +1152,15 @@
       .feature {
         min-height: auto !important;
       }
+      .feat-flagship {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        margin-bottom: 24px !important;
+      }
+      .feat-price {
+        margin-top: 12px !important;
+      }
       footer {
         padding: 40px 20px 20px !important;
       }
@@ -1187,9 +1251,9 @@
   <div id="mob-menu" class="cormorant">
     <button class="menu-btn" onclick="toggleMenu()"
       style="position:absolute; top:32px; right:40px; font-family:sans-serif;">✕</button>
-    <a href="#" class="mob-link" onclick="goHome();toggleMenu()">COLLECTIONS</a>
-    <a href="#" class="mob-link" onclick="goHome();toggleMenu()">ABOUT</a>
-    <a href="#" class="mob-link" onclick="toggleMenu()">CONTACT</a>
+    <a href="#collections" class="mob-link" onclick="goHome(true);toggleMenu()">COLLECTIONS</a>
+    <a href="#about" class="mob-link" onclick="goHome(true);toggleMenu()">ABOUT</a>
+    <a href="#contact" class="mob-link" onclick="goHome(true);toggleMenu()">CONTACT</a>
   </div>
 
   <!-- Nav -->
@@ -1197,8 +1261,8 @@
     <div class="nav-side nav-left">
       <div id="nav-left"></div>
       <div class="nav-links" id="main-nav-links">
-        <a href="#collections" class="nav-link" onclick="goHome()">COLLECTIONS</a>
-        <a href="#about" class="nav-link" onclick="goHome()">ABOUT</a>
+        <a href="#collections" class="nav-link" onclick="goHome(true)">COLLECTIONS</a>
+        <a href="#about" class="nav-link" onclick="goHome(true)">ABOUT</a>
       </div>
     </div>
     
@@ -1279,11 +1343,10 @@
 
     <section class="feature reveal">
       <div class="feat-half feat-left">
-        <div style="position:absolute;top:40px;left:40px;color:var(--gold);font-size:10px;" class="cinzel">THE FLAGSHIP
-        </div>
-        <h2 class="cormorant italic" style="font-size:72px;">Versailles</h2>
-        <div style="color:var(--gold-dim);font-size:20px;" class="jost">640 AED</div>
-      </div>
+      <div class="feat-flagship cinzel">THE FLAGSHIP</div>
+      <h2 class="cormorant italic" style="font-size:72px;">Versailles</h2>
+      <div class="feat-price jost">640 AED</div>
+    </div>
       <div class="feat-half" style="background:var(--dark-surface);">
         <h3 class="cormorant italic" style="font-size:36px;margin-bottom:16px;">Where Paris meets the Persian Gulf</h3>
         <p class="jost" style="color:var(--ivory-dim);line-height:1.8;margin-bottom:32px;">Versailles is not named after
@@ -1297,12 +1360,12 @@
 
     <section style="padding:120px 40px;background:var(--deep-black);" class="reveal">
       <div style="max-width:1000px;margin:0 auto;display:flex;gap:60px;flex-wrap:wrap;align-items:center;">
-        <div style="flex:1;position:relative;">
+        <div style="flex:1;position:relative;min-width:250px;">
           <div class="cormorant"
             style="font-size:140px;color:var(--gold);opacity:0.05;position:absolute;top:-40px;left:-20px;">191</div>
           <h2 class="cormorant italic" style="font-size:42px;position:relative;z-index:2;">Creations. One vision.</h2>
         </div>
-        <div style="flex:1.5;">
+        <div style="flex:1.5;min-width:250px;">
           <div class="cinzel" style="color:var(--gold);font-size:10px;margin-bottom:16px;">THE SKS STORY</div>
           <p class="jost" style="color:var(--ivory-dim);line-height:2;margin-bottom:20px;">Born in Dubai, inspired by
             the world's greatest fragrance capitals — Paris, Grasse, Istanbul, Muscat. SKS Perfumes was founded on a
@@ -1312,6 +1375,37 @@
           <a href="#collections" class="jost" style="color:var(--gold);font-size:14px;">Explore our catalogue <span
               class="c-arrow" style="display:inline-block;">→</span></a>
         </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION (Scroll Driven) -->
+    <section id="about" style="height: 400vh; position: relative;">
+      <div id="about-sticky">
+        <div id="about-particles"></div>
+        
+        <div id="about-text-1" class="about-text">
+          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE ESSENCE</h2>
+          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">We search the world for the rarest raw materials.</p>
+        </div>
+        
+        <div id="about-text-2" class="about-text">
+          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE WOOD</h2>
+          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">Aged agarwood from the deepest forests of Assam.</p>
+        </div>
+
+        <div id="about-text-3" class="about-text">
+          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE RESIN</h2>
+          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">Sweet, warm, and timeless golden amber.</p>
+        </div>
+
+        <div id="about-text-4" class="about-text">
+          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE ALCHEMY</h2>
+          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">Crafted into liquid gold.</p>
+        </div>
+
+        <img id="about-img-oud" class="about-img" src="oud_wood.png" alt="Oud Wood">
+        <img id="about-img-amber" class="about-img" src="golden_amber.png" alt="Golden Amber">
+        <img id="about-img-alchemy" class="about-img" src="sks_alchemy.png" alt="Perfume Alchemy">
       </div>
     </section>
 
@@ -1506,6 +1600,9 @@
     `;
         grid.appendChild(card);
       });
+      if (window.revealObserver) {
+        grid.querySelectorAll('.card.reveal:not(.visible)').forEach(el => window.revealObserver.observe(el));
+      }
     }
 
     function filterData(cat, el) {
@@ -1589,21 +1686,78 @@
          if(heroBg && scrolled < window.innerHeight) {
              heroBg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.05)`;
          }
+         scrubAbout();
       });
 
+      // About Section Scroll Animation Logic
+      function scrubAbout() {
+        const aboutSec = document.getElementById('about');
+        if (!aboutSec) return;
+        
+        const rect = aboutSec.getBoundingClientRect();
+        const start = rect.top;
+        const totalScroll = rect.height - window.innerHeight;
+        
+        // Progress from 0 to 1
+        let p = -start / totalScroll;
+        if (p < 0) p = 0;
+        if (p > 1) p = 1;
+
+        const t1 = document.getElementById('about-text-1');
+        const t2 = document.getElementById('about-text-2');
+        const t3 = document.getElementById('about-text-3');
+        const t4 = document.getElementById('about-text-4');
+        const imgOud = document.getElementById('about-img-oud');
+        const imgAmber = document.getElementById('about-img-amber');
+        const imgAlchemy = document.getElementById('about-img-alchemy');
+
+        // Reset all
+        [t1, t2, t3, t4, imgOud, imgAmber, imgAlchemy].forEach(el => {
+          if(el) { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; }
+        });
+
+        // Stage 1: 0% - 25% (Essence)
+        if (p >= 0 && p < 0.25) {
+          const localP = p / 0.25;
+          const op = localP < 0.2 ? localP / 0.2 : (localP > 0.8 ? (1 - localP) / 0.2 : 1);
+          if(t1) { t1.style.opacity = op; t1.style.transform = `translateY(${30 - localP*30}px)`; }
+        }
+        // Stage 2: 25% - 50% (Oud Wood)
+        else if (p >= 0.25 && p < 0.5) {
+          const localP = (p - 0.25) / 0.25;
+          const op = localP < 0.2 ? localP / 0.2 : (localP > 0.8 ? (1 - localP) / 0.2 : 1);
+          if(t2) { t2.style.opacity = op; t2.style.transform = `translateY(${30 - localP*30}px)`; }
+          if(imgOud) { imgOud.style.opacity = op; imgOud.style.transform = `scale(${1 + localP*0.05}) rotate(${localP*5}deg)`; }
+        }
+        // Stage 3: 50% - 75% (Amber)
+        else if (p >= 0.5 && p < 0.75) {
+          const localP = (p - 0.5) / 0.25;
+          const op = localP < 0.2 ? localP / 0.2 : (localP > 0.8 ? (1 - localP) / 0.2 : 1);
+          if(t3) { t3.style.opacity = op; t3.style.transform = `translateY(${30 - localP*30}px)`; }
+          if(imgAmber) { imgAmber.style.opacity = op; imgAmber.style.transform = `scale(${1.05 - localP*0.05}) translateY(${localP*20}px)`; }
+        }
+        // Stage 4: 75% - 100% (Alchemy)
+        else if (p >= 0.75 && p <= 1) {
+          const localP = (p - 0.75) / 0.25;
+          const op = localP < 0.2 ? localP / 0.2 : 1; // Keep visible at end
+          if(t4) { t4.style.opacity = op; t4.style.transform = `translateY(${30 - Math.min(localP,1)*30}px)`; }
+          if(imgAlchemy) { imgAlchemy.style.opacity = op; imgAlchemy.style.transform = `scale(${1 + localP*0.05})`; }
+        }
+      }
+
       // Staggered Reveal Observer
-      const obs = new IntersectionObserver((ents) => {
+      window.revealObserver = new IntersectionObserver((ents) => {
         // Group intersections in this frame to stagger them
         const intersecting = ents.filter(e => e.isIntersecting);
         intersecting.forEach((e, i) => { 
             setTimeout(() => {
               if(e.target) e.target.classList.add('visible'); 
             }, i * 50); // 50ms stagger between elements entering same frame
-            obs.unobserve(e.target); // play only once
+            window.revealObserver.unobserve(e.target); // play only once
         });
       }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
       
-      document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+      document.querySelectorAll('.reveal, .reveal-scale').forEach(el => window.revealObserver.observe(el));
       
       // Magnetic Buttons Feature
       document.querySelectorAll('.btn, .wa-btn, .hero-cta').forEach(btn => {
@@ -1621,12 +1775,12 @@
 
     }
 
-    function goHome() {
+    function goHome(preventScroll = false) {
       document.getElementById('view-product').classList.add('hidden');
       document.getElementById('view-landing').classList.remove('hidden');
       document.getElementById('nav-left').innerHTML = '';
       if(document.getElementById('main-nav-links')) document.getElementById('main-nav-links').style.display = 'flex';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (!preventScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function openProduct(id) {
