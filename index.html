@@ -417,7 +417,7 @@
 
 
     /* Mobile */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .hero-h1 {
         font-size: clamp(40px, 14vw, 72px);
       }
@@ -1000,9 +1000,10 @@
       transform: translateY(0);
     }
 
-    @media (max-width:768px) {
+    @media (max-width: 1024px) {
       nav {
         padding: 24px 20px;
+        min-height: 70px;
       }
       nav.scrolled {
         padding: 16px 20px;
@@ -1029,6 +1030,10 @@
 
       .menu-btn {
         display: block;
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
       }
 
       .brand-strip {
@@ -1050,7 +1055,7 @@
       }
     }
     /* ---- Ultra-Luxury Mobile View Overrides ---- */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       /* Typography Scaling for small screens */
       .cormorant[style*="font-size:140px"] {
         font-size: 80px !important;
@@ -1141,8 +1146,12 @@
       }
       
       /* Hero alignment fixes */
+      #hero::after {
+        background: linear-gradient(to bottom, transparent 40%, #080808 85%, #080808 100%) !important;
+        opacity: 0.95;
+      }
       #hero-bg {
-        object-position: center 0% !important; /* shift bottle upwards on mobile so text fits below */
+        object-position: center top !important; /* shift bottle upwards on mobile so text fits below */
       }
       #hero {
         align-items: flex-end !important;
