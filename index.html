@@ -665,45 +665,13 @@
       color: white;
     }
 
-    /* ---- ABOUT SCROLL SECTION ---- */
+    /* ---- ABOUT SECTION DESIGN ---- */
     #about {
       width: 100%;
       background: var(--obsidian);
-      z-index: 5;
-    }
-    #about-sticky {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100vh;
+      position: relative;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .about-text {
-      position: absolute;
-      width: 90%;
-      max-width: 800px;
-      text-align: center;
-      z-index: 10;
-      opacity: 0;
-      transform: translateY(30px);
-      will-change: opacity, transform;
-    }
-    .about-img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      z-index: 1;
-      will-change: opacity, transform;
-      mix-blend-mode: screen;
-    }
-    #about-img-alchemy {
-      object-fit: contain;
-      transform: scale(1.1);
+      padding: 120px 40px;
     }
 
     /* Feature Banner */
@@ -1378,34 +1346,44 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION (Scroll Driven) -->
-    <section id="about" style="height: 400vh; position: relative;">
-      <div id="about-sticky">
-        <div id="about-particles"></div>
-        
-        <div id="about-text-1" class="about-text">
-          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE ESSENCE</h2>
-          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">We search the world for the rarest raw materials.</p>
-        </div>
-        
-        <div id="about-text-2" class="about-text">
-          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE WOOD</h2>
-          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">Aged agarwood from the deepest forests of Assam.</p>
-        </div>
+    <!-- ABOUT SECTION (Standard Layout) -->
+    <section id="about">
+      
+      <!-- Section Header -->
+      <div class="reveal" style="text-align: center; margin-bottom: 100px;">
+        <div class="cinzel" style="color:var(--gold);font-size:12px;letter-spacing:0.4em;margin-bottom:24px;">THE ALCHEMY</div>
+        <h2 class="cormorant italic" style="font-size:clamp(40px, 6vw, 64px);line-height:1.2;">From Forest to Flask</h2>
+      </div>
 
-        <div id="about-text-3" class="about-text">
-          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE RESIN</h2>
-          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">Sweet, warm, and timeless golden amber.</p>
+      <!-- Stage 1 (Wood) -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto 160px;">
+        <div class="reveal" style="flex: 1; min-width: 300px;">
+          <h3 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE WOOD</h3>
+          <p class="cormorant italic" style="font-size:clamp(32px, 4vw, 42px);line-height:1.4;">Aged agarwood<br>from the deepest forests of Assam.</p>
         </div>
-
-        <div id="about-text-4" class="about-text">
-          <h2 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE ALCHEMY</h2>
-          <p class="cormorant italic" style="font-size:clamp(32px, 5vw, 42px);line-height:1.2;">Crafted into liquid gold.</p>
+        <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
+          <img src="oud_wood.png" class="reveal-scale" alt="Oud Wood" style="width: 100%; max-width: 400px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 40px rgba(201,168,76,0.1));">
         </div>
+      </div>
 
-        <img id="about-img-oud" class="about-img" src="oud_wood.png" alt="Oud Wood">
-        <img id="about-img-amber" class="about-img" src="golden_amber.png" alt="Golden Amber">
-        <img id="about-img-alchemy" class="about-img" src="sks_alchemy.png" alt="Perfume Alchemy">
+      <!-- Stage 2 (Resin) -->
+      <div style="display: flex; flex-wrap: wrap-reverse; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto 160px;">
+        <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
+          <img src="golden_amber.png" class="reveal-scale" alt="Golden Amber" style="width: 100%; max-width: 400px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 40px rgba(201,168,76,0.15));">
+        </div>
+        <div class="reveal" style="flex: 1; min-width: 300px; text-align: right;">
+          <h3 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE RESIN</h3>
+          <p class="cormorant italic" style="font-size:clamp(32px, 4vw, 42px);line-height:1.4;">Sweet, warm, and<br>timeless golden amber.</p>
+        </div>
+      </div>
+
+      <!-- Stage 3 (Alchemy) -->
+      <div style="position: relative; max-width: 800px; margin: 0 auto; text-align: center;">
+        <img src="sks_alchemy.png" class="reveal-scale" alt="Perfume Alchemy" style="width: 100%; object-fit: contain; mix-blend-mode: screen; margin-bottom: -100px; position: relative; z-index: 1;">
+        <div class="reveal" style="position: relative; z-index: 2; padding: 40px; background: radial-gradient(circle, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0) 80%);">
+          <h3 class="cinzel" style="color:var(--gold);font-size:14px;letter-spacing:0.3em;margin-bottom:24px;">THE ESSENCE</h3>
+          <p class="cormorant italic" style="font-size:clamp(36px, 5vw, 52px);line-height:1.2;">Crafted into liquid gold.</p>
+        </div>
       </div>
     </section>
 
@@ -1686,64 +1664,7 @@
          if(heroBg && scrolled < window.innerHeight) {
              heroBg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.05)`;
          }
-         scrubAbout();
       });
-
-      // About Section Scroll Animation Logic
-      function scrubAbout() {
-        const aboutSec = document.getElementById('about');
-        if (!aboutSec) return;
-        
-        const rect = aboutSec.getBoundingClientRect();
-        const start = rect.top;
-        const totalScroll = rect.height - window.innerHeight;
-        
-        // Progress from 0 to 1
-        let p = -start / totalScroll;
-        if (p < 0) p = 0;
-        if (p > 1) p = 1;
-
-        const t1 = document.getElementById('about-text-1');
-        const t2 = document.getElementById('about-text-2');
-        const t3 = document.getElementById('about-text-3');
-        const t4 = document.getElementById('about-text-4');
-        const imgOud = document.getElementById('about-img-oud');
-        const imgAmber = document.getElementById('about-img-amber');
-        const imgAlchemy = document.getElementById('about-img-alchemy');
-
-        // Reset all
-        [t1, t2, t3, t4, imgOud, imgAmber, imgAlchemy].forEach(el => {
-          if(el) { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; }
-        });
-
-        // Stage 1: 0% - 25% (Essence)
-        if (p >= 0 && p < 0.25) {
-          const localP = p / 0.25;
-          const op = localP < 0.2 ? localP / 0.2 : (localP > 0.8 ? (1 - localP) / 0.2 : 1);
-          if(t1) { t1.style.opacity = op; t1.style.transform = `translateY(${30 - localP*30}px)`; }
-        }
-        // Stage 2: 25% - 50% (Oud Wood)
-        else if (p >= 0.25 && p < 0.5) {
-          const localP = (p - 0.25) / 0.25;
-          const op = localP < 0.2 ? localP / 0.2 : (localP > 0.8 ? (1 - localP) / 0.2 : 1);
-          if(t2) { t2.style.opacity = op; t2.style.transform = `translateY(${30 - localP*30}px)`; }
-          if(imgOud) { imgOud.style.opacity = op; imgOud.style.transform = `scale(${1 + localP*0.05}) rotate(${localP*5}deg)`; }
-        }
-        // Stage 3: 50% - 75% (Amber)
-        else if (p >= 0.5 && p < 0.75) {
-          const localP = (p - 0.5) / 0.25;
-          const op = localP < 0.2 ? localP / 0.2 : (localP > 0.8 ? (1 - localP) / 0.2 : 1);
-          if(t3) { t3.style.opacity = op; t3.style.transform = `translateY(${30 - localP*30}px)`; }
-          if(imgAmber) { imgAmber.style.opacity = op; imgAmber.style.transform = `scale(${1.05 - localP*0.05}) translateY(${localP*20}px)`; }
-        }
-        // Stage 4: 75% - 100% (Alchemy)
-        else if (p >= 0.75 && p <= 1) {
-          const localP = (p - 0.75) / 0.25;
-          const op = localP < 0.2 ? localP / 0.2 : 1; // Keep visible at end
-          if(t4) { t4.style.opacity = op; t4.style.transform = `translateY(${30 - Math.min(localP,1)*30}px)`; }
-          if(imgAlchemy) { imgAlchemy.style.opacity = op; imgAlchemy.style.transform = `scale(${1 + localP*0.05})`; }
-        }
-      }
 
       // Staggered Reveal Observer
       window.revealObserver = new IntersectionObserver((ents) => {
