@@ -1,0 +1,5 @@
+.DS_Store
+replace_hero.py
+.venv
+__pycache__
+*.pyc

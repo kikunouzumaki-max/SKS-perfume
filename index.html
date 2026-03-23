@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKS Perfumes | Haute Parfumerie</title>
+  <meta name="description" content="SKS Perfumes — Luxury fragrances from Dubai. French-inspired, Arabian-rooted.">
+  <meta name="theme-color" content="#080808">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --obsidian: #080808;
+      --deep-black: #0D0D0D;
+      --charcoal: #1A1A1A;
+      --dark-surface: #141414;
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --gold-dim: #8C6D2F;
+      --gold-glow: rgba(201, 168, 76, 0.15);
+      --ivory: #F5EFE0;
+      --ivory-dim: #C4BAA3;
+      --white: #FAFAF8;
+      --crimson: #6B1A1A;
+      --emerald-dark: #0D2B1F;
+      --border-gold: rgba(201, 168, 76, 0.25);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--obsidian);
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-dim) transparent;
+    }
+
+    ::selection {
+      background: rgba(201, 168, 76, 0.25);
+      color: #F5EFE0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Custom Cursor */
+    .cursor {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, background 0.4s ease;
+      left: 50%;
+      top: 50%;
+    }
+
+    .cursor.hover {
+      width: 50px;
+      height: 50px;
+      opacity: 0.15;
+      background: var(--ivory);
+      mix-blend-mode: difference;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* Typography Classes */
+    .cormorant {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .cinzel {
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+    }
+
+    .jost {
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 60px; /* Wider padding for luxury feel */
+      z-index: 1000;
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    nav.scrolled {
+      padding: 20px 60px;
+      background: rgba(8, 8, 8, 0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* very subtle */
+    }
+
+    .nav-side {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-left {
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .nav-logo {
+      font-size: 32px; /* Adjusted larger */
+      color: var(--gold);
+      letter-spacing: 0.4em;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      margin-right: -0.4em; /* Compensate for letter-spacing */
+    }
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 10px;
+      color: var(--ivory);
+      opacity: 0.8;
+      font-weight: 500;
+    }
+
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 4px;
+      letter-spacing: 0.25em;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .nav-link:hover {
+      opacity: 1;
+    }
+
+    .nav-link:hover::after,
+    .btn:hover .nav-link::after {
+      transform: scaleX(1);
+    }
+
+    .nav-wa {
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #F5EFE0;
+      border: 1px solid rgba(255,255,255, 0.12);
+      padding: 12px 24px;
+      border-radius: 40px; /* Pill shape for aesthetic appeal */
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      letter-spacing: 0.25em;
+      background: rgba(255, 255, 255, 0.02);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-wa svg {
+      color: #25D366;
+      transition: color 0.4s ease;
+    }
+
+    .nav-wa:hover {
+      background: #25D366;
+      border-color: #25D366;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.15);
+    }
+    .nav-wa:hover svg {
+      color: white;
+    }
+
+    /* Views */
+    .view {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .view.hidden {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      transform: translateY(20px);
+    }
+
+    .view.hidden * {
+      visibility: hidden;
+    }
+
+    /* Reveal Animations - Luxurious */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      filter: blur(8px);
+      transition: opacity 1.4s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
+      filter: blur(8px);
+      transition: opacity 1.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+
+    /* General Buttons (Needed for other sections) */
+    .btn {
+      padding: 14px 24px;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: rgba(8, 8, 8, 0.5);
+      transition: background 0.4s ease, color 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-transform: uppercase;
+      z-index: 10;
+      display: inline-block;
+      border-radius: 2px;
+      will-change: transform;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--obsidian);
+    }
+
+    /* ══ CINEMATIC HERO ══ */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: #080808;
+    }
+
+    /* Full-bleed background image — the mountain landscape photo */
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      z-index: 0;
+      opacity: 0.85;
+      animation: heroFadeIn 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    /* Multi-layer vignette — darkens edges, keeps center glowing */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 45%, transparent 30%, rgba(0, 0, 0, 0.65) 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 15%, transparent 70%, rgba(8, 8, 8, 1) 100%),
+        linear-gradient(to right, rgba(8, 8, 8, 0.7) 0%, transparent 25%, transparent 75%, rgba(8, 8, 8, 0.7) 100%);
+    }
+
+
+    /* Bottom-right: tagline + CTA */
+    .hero-bottom-right {
+      position: absolute;
+      bottom: 80px;
+      right: 5vw;
+      max-width: 300px;
+      text-align: left;
+      z-index: 6;
+      pointer-events: auto;
+    }
+
+    .hero-desc {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--ivory-dim);
+      line-height: 1.85;
+      margin-bottom: 28px;
+      animation: fadeUp 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s both;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      background: rgba(8, 8, 8, 0.5);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 16px 32px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      transition: background 0.4s ease, color 0.4s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      animation: fadeUp 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.0s both;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      will-change: transform;
+    }
+
+    .hero-cta:hover {
+      background: var(--gold);
+      color: #080808;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    .scroll-text {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      color: var(--ivory-dim);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      letter-spacing: 0.3em;
+      opacity: 0.6;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero-h1 {
+        font-size: clamp(40px, 14vw, 72px);
+      }
+
+      .hero-line2 {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-word-left {
+        padding-left: 5vw;
+      }
+
+      .hero-word-right {
+        padding-right: 5vw;
+        text-align: left;
+        padding-top: 8px;
+      }
+
+      .bottle-container {
+        width: 70vw;
+        margin: 24px auto;
+      }
+
+      .hero-bottom-right {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        max-width: 100%;
+        padding: 32px 5vw;
+        text-align: center;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    /* Brand Strip */
+    #brand-strip {
+      display: flex;
+      padding: 40px 0;
+      background: var(--deep-black);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .pillar {
+      flex: 1;
+      text-align: center;
+      border-right: 1px solid var(--border-subtle);
+      padding: 20px;
+    }
+
+    .pillar:last-child {
+      border-right: none;
+    }
+
+    .pillar-num {
+      font-size: 18px;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .pillar-text {
+      font-size: 10px;
+      color: var(--ivory-dim);
+    }
+
+    /* Collections */
+    #collections {
+      padding: 100px 40px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+      font-size: 10px;
+      color: var(--ivory-dim);
+    }
+
+    .tab {
+      position: relative;
+      opacity: 0.7;
+      transition: all 0.3s;
+      padding-bottom: 4px;
+    }
+
+    .tab.active {
+      color: var(--gold);
+      opacity: 1;
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* Product Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--dark-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: all 0.6s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(201, 168, 76, 0.5);
+      box-shadow: 0 0 30px rgba(201, 168, 76, 0.08);
+    }
+
+    .card-img-area {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-img-area svg {
+      width: 50%;
+      opacity: 0.4;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover .card-img-area svg {
+      transform: scale(1.05);
+    }
+
+    .card-info {
+      padding: 20px;
+    }
+
+    .c-badge {
+      font-size: 9px;
+      color: var(--gold);
+      letter-spacing: 0.3em;
+      margin-bottom: 6px;
+    }
+
+    .c-title {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .c-desc {
+      font-size: 13px;
+      color: var(--ivory-dim);
+      margin-bottom: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .c-div {
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.2;
+      margin: 12px 0;
+    }
+
+    .c-price {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      color: var(--gold);
+    }
+
+    .c-arrow {
+      transition: transform 0.3s auto;
+    }
+
+    .card:hover .c-arrow {
+      transform: translateX(4px);
+    }
+
+    /* WhatsApp CTA */
+    .wa-block {
+      text-align: center;
+      padding: 100px 20px;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(37, 211, 102, 0.04) 0%, transparent 70%);
+      background-color: var(--deep-black);
+    }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #25D366;
+      color: #25D366;
+      padding: 16px 32px;
+      font-size: 12px;
+      margin-top: 32px;
+      transition: all 0.4s;
+    }
+
+    .wa-btn:hover {
+      background: #25D366;
+      color: white;
+    }
+
+    /* Feature Banner */
+    .feature {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 500px;
+    }
+
+    .feat-half {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 8%;
+    }
+
+    .feat-left {
+      background: radial-gradient(160deg, #0a0a0a 0%, #1a0a00 40%, #2d1500 70%, #0a0608 100%);
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--deep-black);
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+      padding: 60px 8% 20px;
+    }
+
+    .ft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .ft-title {
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .ft-text {
+      font-size: 13px;
+      color: var(--ivory-dim);
+      line-height: 1.8;
+    }
+
+    .ft-heading {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 0.3em;
+      margin-bottom: 20px;
+    }
+
+    .ft-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 11px;
+      color: rgba(196, 186, 163, 0.5);
+    }
+
+    /* Marquee */
+    .marquee-wrapper {
+      padding: 32px 0;
+      background: rgba(201, 168, 76, 0.04);
+      border-top: 1px solid rgba(201, 168, 76, 0.12);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--gold-dim);
+      letter-spacing: 0.35em;
+      animation: scroll 30s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ------------- PRODUCT PAGE ------------- */
+    #view-product .wa-prod-cta {
+      margin: 32px 0;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      background: rgba(37, 211, 102, 0.04);
+      border-radius: 2px;
+      padding: 28px;
+    }
+
+    .wa-prod-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 56px;
+      background: #25D366;
+      color: white;
+      margin: 16px 0;
+      font-size: 13px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.3em;
+      transition: background 0.3s;
+    }
+
+    .wa-prod-btn:hover {
+      background: #128C7E;
+    }
+
+    .wa-trust {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--ivory-dim);
+    }
+
+    .prod-layout {
+      display: flex;
+      min-height: 100vh;
+      flex-wrap: wrap;
+      padding-top: 80px;
+    }
+
+    .prod-vis {
+      flex: 1;
+      min-width: 300px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .prod-info-col {
+      flex: 1;
+      min-width: 300px;
+      padding: 60px 8%;
+      background: var(--obsidian);
+    }
+
+    .p-bread {
+      font-size: 9px;
+      color: var(--ivory-dim);
+      opacity: 0.6;
+      margin-bottom: 24px;
+    }
+
+    .p-name {
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1;
+      margin: 12px 0;
+    }
+
+    .p-tag {
+      font-size: 20px;
+      color: var(--ivory-dim);
+      margin-bottom: 24px;
+    }
+
+    .p-div {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    .p-price {
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .p-size-sel {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      border: 1px solid var(--gold-dim);
+      padding: 8px 16px;
+      font-size: 13px;
+      color: var(--ivory-dim);
+      transition: all 0.3s;
+    }
+
+    .pill.active {
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, 0.1);
+      color: var(--gold);
+    }
+
+    .notes-pyr {
+      margin: 32px 0;
+      padding-left: 20px;
+      border-left: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .note-tier {
+      padding: 12px 0;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .note-tier:hover {
+      opacity: 1;
+    }
+
+    .note-tit {
+      font-size: 9px;
+      color: var(--gold-dim);
+      margin-bottom: 6px;
+    }
+
+    .note-val {
+      font-size: 18px;
+      color: var(--ivory);
+    }
+
+    .bars {
+      margin: 32px 0;
+    }
+
+    .bar-row {
+      margin-bottom: 16px;
+    }
+
+    .bar-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      margin-bottom: 6px;
+    }
+
+    .bar-track {
+      height: 2px;
+      background: rgba(201, 168, 76, 0.15);
+      width: 100%;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--gold-dim), var(--gold));
+      width: 0;
+      transition: width 1s ease-out;
+    }
+
+    .occ-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .o-tag {
+      border: 1px solid var(--border-gold);
+      padding: 5px 14px;
+      font-size: 9px;
+      color: var(--ivory-dim);
+      letter-spacing: 0.2em;
+      border-radius: 12px;
+    }
+
+    /* Rotating Orbit */
+    .orbit {
+      position: absolute;
+      width: 70%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Mobile Menu */
+    #mob-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 8, 8, 0.98);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    #mob-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 24px;
+      z-index: 1001;
+    }
+
+    .mob-link {
+      font-size: 32px;
+      color: var(--ivory);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s;
+    }
+
+    #mob-menu.open .mob-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width:768px) {
+      nav {
+        padding: 24px 20px;
+      }
+      nav.scrolled {
+        padding: 16px 20px;
+      }
+      .nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        margin-right: 0;
+      }
+      .nav-logo:hover {
+        transform: translateX(-50%) scale(1.05); /* maintain center positioning on hover */
+      }
+      
+      .nav-links,
+      .nav-wa {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .brand-strip {
+        flex-wrap: wrap;
+      }
+
+      .pillar {
+        min-width: 50%;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .prod-layout {
+        flex-direction: column;
+      }
+
+      .prod-vis {
+        position: relative;
+        height: 60vh;
+      }
+    }
+    /* ---- Ultra-Luxury Mobile View Overrides ---- */
+    @media (max-width: 768px) {
+      /* Typography Scaling for small screens */
+      .cormorant[style*="font-size:140px"] {
+        font-size: 80px !important;
+        top: -10px !important;
+        left: 0 !important;
+      }
+      .feat-left h2.cormorant {
+        font-size: clamp(40px, 12vw, 72px) !important;
+      }
+      h2.cormorant[style*="font-size:52px"] {
+        font-size: clamp(32px, 10vw, 52px) !important;
+      }
+      h3.cormorant[style*="font-size:36px"] {
+        font-size: 28px !important;
+      }
+      h2.cormorant[style*="font-size:42px"] {
+        font-size: 32px !important;
+      }
+      
+      /* Paragraph line heights */
+      .jost {
+        line-height: 1.6 !important;
+      }
+      .hero-desc {
+        font-size: 14px !important;
+      }
+      
+      /* Global Layout & Padding Fixes */
+      #collections, 
+      section[style*="padding:120px 40px"], 
+      .wa-block {
+        padding: 60px 20px !important;
+      }
+      .feat-half {
+        padding: 40px 20px !important;
+      }
+      .feature {
+        min-height: auto !important;
+      }
+      footer {
+        padding: 40px 20px 20px !important;
+      }
+      .ft-grid {
+        gap: 32px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      /* Brand Strip spacing */
+      #brand-strip {
+        padding: 24px 0 !important;
+      }
+      .pillar {
+        padding: 32px 20px !important;
+      }
+      
+      /* Collections Tabs aesthetic wrapping */
+      .tabs {
+        flex-wrap: wrap;
+        gap: 12px;
+        row-gap: 16px;
+      }
+      .tab {
+        padding: 8px 16px;
+        border: 1px solid rgba(201, 168, 76, 0.15);
+        border-radius: 40px;
+        font-size: 10px;
+        opacity: 0.8;
+      }
+      .tab.active {
+        background: rgba(201, 168, 76, 0.12);
+        border-color: var(--gold);
+        opacity: 1;
+      }
+      .tab.active::after {
+        display: none !important;
+      }
+      
+      /* Product Layout */
+      .prod-info-col {
+        padding: 40px 20px !important;
+      }
+      #p-vis {
+        height: 50vh !important;
+      }
+      .p-name {
+        font-size: clamp(36px, 10vw, 72px) !important;
+        margin-top: 16px !important;
+      }
+      
+      /* Hero alignment fixes */
+      #hero-bg {
+        object-position: center 0% !important; /* shift bottle upwards on mobile so text fits below */
+      }
+      #hero {
+        align-items: flex-end !important;
+        padding-bottom: 60px !important; /* give text some space off the bottom edge */
+      }
+      .hero-bottom-right {
+        position: relative !important;
+        bottom: 0 !important; 
+        right: auto !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
+        text-align: center;
+        z-index: 10;
+      }
+      
+      /* Order via WA hero button */
+      .hero-cta {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="cormorant">
+    <button class="menu-btn" onclick="toggleMenu()"
+      style="position:absolute; top:32px; right:40px; font-family:sans-serif;">✕</button>
+    <a href="#" class="mob-link" onclick="goHome();toggleMenu()">COLLECTIONS</a>
+    <a href="#" class="mob-link" onclick="goHome();toggleMenu()">ABOUT</a>
+    <a href="#" class="mob-link" onclick="toggleMenu()">CONTACT</a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="navbar" class="cinzel">
+    <div class="nav-side nav-left">
+      <div id="nav-left"></div>
+      <div class="nav-links" id="main-nav-links">
+        <a href="#collections" class="nav-link" onclick="goHome()">COLLECTIONS</a>
+        <a href="#about" class="nav-link" onclick="goHome()">ABOUT</a>
+      </div>
+    </div>
+    
+    <div class="nav-logo" onclick="goHome()">SKS</div>
+    
+    <div class="nav-side nav-right">
+      <a href="https://wa.me/971500000000" target="_blank" class="nav-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.99 2.02c-5.5 0-9.98 4.47-9.98 9.98 0 1.95.56 3.77 1.5 5.3l-1.5 5.6 5.64-1.52c1.47.88 3.18 1.4 5.03 1.4 5.51 0 9.99-4.47 9.99-9.98S17.5 2.02 11.99 2.02zm5.8 14.12c-.24.7-1.38 1.34-1.92 1.4-.5.06-1.12.1-3.23-.78-2.5-1.05-4.1-3.64-4.22-3.8-.13-.16-1-1.34-1-2.55s.62-1.8.84-2.03c.22-.24.5-.3.65-.3s.31 0 .47.03c.15.02.37-.05.58.45.2.5.7 1.74.77 1.88.06.14.1.3.01.5-.09.2-.14.31-.27.46-.14.15-.28.32-.4.43-.14.15-.3.32-.13.62.16.3.74 1.25 1.59 2.01.5.45.92.68 1.15.82.16.1.33.1.45 0s.5-.58.64-.78c.13-.2.27-.16.48-.09s1.34.62 1.57.74c.23.12.38.18.43.28.06.1.06.58-.18 1.28z" />
+        </svg>
+        <span>ORDER VIA WHATSAPP</span>
+      </a>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()" style="position: absolute; right: 20px;">☰</button>
+  </nav>
+
+  <!-- Landing View -->
+  <div id="view-landing" class="view">
+
+    <section id="hero">
+
+      <!-- Full-bleed cinematic background -->
+      <img id="hero-bg" src="1.png" alt="SKS Perfumes — Dark Mountain Landscape">
+      
+      <!-- Majestic Particles Layer -->
+      <canvas id="hero-particles" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;"></canvas>
+
+      <!-- Bottom-right: tagline + CTA -->
+      <div class="hero-bottom-right">
+        <p class="hero-desc">
+          SKS is where Arabian soul meets French refinement —
+          a signature scent crafted for those who feel more than they say.
+        </p>
+        <a href="#collections" class="hero-cta cinzel">EXPLORE COLLECTION →</a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+      </div>
+
+    </section>
+
+    <section id="brand-strip" class="reveal">
+      <div class="pillar">
+        <div class="pillar-num cormorant italic">I</div>
+        <div class="pillar-text cinzel">MAISON DUBAI</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num cormorant italic">II</div>
+        <div class="pillar-text cinzel">SINCE 2019</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num cormorant italic">III</div>
+        <div class="pillar-text cinzel">191 CREATIONS</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num cormorant italic">IV</div>
+        <div class="pillar-text cinzel">FRENCH HERITAGE</div>
+      </div>
+    </section>
+
+    <section id="collections">
+      <div class="section-header reveal">
+        <div class="hero-ornament">——— ✦ ———</div>
+        <h2 class="cormorant" style="font-size:52px;font-weight:300;">Our Collections</h2>
+        <p class="jost" style="color:var(--ivory-dim);margin-top:12px;">Each fragrance is an invitation. A destination.
+          A memory not yet made.</p>
+      </div>
+      <div class="tabs cinzel reveal">
+        <div class="tab active" onclick="filterData('all', this)">ALL</div>
+        <div class="tab" onclick="filterData('luxury', this)">LUXURY</div>
+        <div class="tab" onclick="filterData('glamour', this)">GLAMOUR</div>
+        <div class="tab" onclick="filterData('oud', this)">OUD & OILS</div>
+      </div>
+      <div class="grid reveal" id="grid-container"></div>
+    </section>
+
+    <section class="feature reveal">
+      <div class="feat-half feat-left">
+        <div style="position:absolute;top:40px;left:40px;color:var(--gold);font-size:10px;" class="cinzel">THE FLAGSHIP
+        </div>
+        <h2 class="cormorant italic" style="font-size:72px;">Versailles</h2>
+        <div style="color:var(--gold-dim);font-size:20px;" class="jost">640 AED</div>
+      </div>
+      <div class="feat-half" style="background:var(--dark-surface);">
+        <h3 class="cormorant italic" style="font-size:36px;margin-bottom:16px;">Where Paris meets the Persian Gulf</h3>
+        <p class="jost" style="color:var(--ivory-dim);line-height:1.8;margin-bottom:32px;">Versailles is not named after
+          a palace by accident. It opens with bergamot and neroli — light, civilized, Parisian. Then the heart reveals
+          itself: pure oud from Assam, aged leather, and a faint whisper of rose absolute. A fragrance that commands a
+          room.</p>
+        <button class="btn cinzel" style="width:fit-content;" onclick="openProduct('versailles')">DISCOVER
+          VERSAILLES</button>
+      </div>
+    </section>
+
+    <section style="padding:120px 40px;background:var(--deep-black);" class="reveal">
+      <div style="max-width:1000px;margin:0 auto;display:flex;gap:60px;flex-wrap:wrap;align-items:center;">
+        <div style="flex:1;position:relative;">
+          <div class="cormorant"
+            style="font-size:140px;color:var(--gold);opacity:0.05;position:absolute;top:-40px;left:-20px;">191</div>
+          <h2 class="cormorant italic" style="font-size:42px;position:relative;z-index:2;">Creations. One vision.</h2>
+        </div>
+        <div style="flex:1.5;">
+          <div class="cinzel" style="color:var(--gold);font-size:10px;margin-bottom:16px;">THE SKS STORY</div>
+          <p class="jost" style="color:var(--ivory-dim);line-height:2;margin-bottom:20px;">Born in Dubai, inspired by
+            the world's greatest fragrance capitals — Paris, Grasse, Istanbul, Muscat. SKS Perfumes was founded on a
+            single belief: that exceptional fragrance should not be the privilege of a few. Every bottle in our
+            collection is a journey. Every note is chosen with intent. We bridge the ancient art of Arabian perfumery
+            with the refined elegance of French haute parfumerie.</p>
+          <a href="#collections" class="jost" style="color:var(--gold);font-size:14px;">Explore our catalogue <span
+              class="c-arrow" style="display:inline-block;">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee-wrapper">
+      <div class="marquee cinzel">
+        OFFICIAL STOCKIST ——— M. MICALLEF ——— PARIS · MONACO · DUBAI ——— OFFICIAL STOCKIST ——— M. MICALLEF ——— PARIS ·
+        MONACO · DUBAI ——— OFFICIAL STOCKIST ——— M. MICALLEF ——— PARIS · MONACO · DUBAI
+      </div>
+    </div>
+
+    <section class="wa-block reveal">
+      <h2 class="cormorant italic" style="font-size:52px;margin-bottom:16px;">Your next signature scent is one message
+        away.</h2>
+      <p class="jost" style="color:var(--ivory-dim);max-width:600px;margin:0 auto;">Browse our full catalogue, ask about
+        fragrance notes, request samples, or place your order — all through WhatsApp. Our fragrance consultants are
+        available 7 days a week.</p>
+      <a href="https://wa.me/971500000000?text=Hello%2C%20I%27d%20like%20to%20browse%20the%20SKS%20Perfumes%20catalogue"
+        target="_blank" class="wa-btn cinzel">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.99 2.02c-5.5...z" fill-rule="evenodd" clip-rule="evenodd" />
+        </svg>
+        OPEN WHATSAPP CATALOGUE
+      </a>
+      <div style="margin-top:16px;font-size:13px;color:var(--ivory-dim);" class="jost">+971 50 000 0000 · Available
+        9AM–11PM</div>
+    </section>
+
+    <footer>
+      <div class="ft-grid">
+        <div>
+          <div class="cinzel ft-title">SKS</div>
+          <div class="ft-text">S.K.S Perfumes<br>Dubai, UAE</div>
+        </div>
+        <div>
+          <div class="ft-heading">EXPLORE</div>
+          <div class="ft-text"><a href="#collections">Collections</a><br><a href="#collections">Luxury
+              Collection</a><br><a href="#collections">Glamour Series</a><br><a href="#collections">Oud & Oils</a></div>
+        </div>
+        <div>
+          <div class="ft-heading">ORDER & ENQUIRIES</div>
+          <div class="ft-text">WhatsApp: +971 50 000 0000<br>Instagram: @sks_perfumes<br>sksperfumes.com</div>
+        </div>
+      </div>
+      <div class="ft-bottom">© 2026 SKS Perfumes · Dubai · All rights reserved</div>
+    </footer>
+  </div>
+
+  <!-- Product View -->
+  <div id="view-product" class="view hidden">
+    <div class="prod-layout">
+      <div class="prod-vis" id="p-vis">
+        <div class="orbit"></div>
+        <svg viewBox="0 0 120 200" fill="none" style="width:60%; opacity:0.6; z-index:2;">
+          <rect x="45" y="10" width="30" height="18" rx="4" fill="rgba(201,168,76,0.4)" />
+          <rect x="50" y="28" width="20" height="20" fill="rgba(201,168,76,0.2)" />
+          <path d="M35 48 L50 48 L70 48 L85 48 L88 70 L32 70 Z" fill="rgba(201,168,76,0.2)" />
+          <rect x="32" y="70" width="56" height="100" rx="4" fill="rgba(201,168,76,0.15)" />
+          <rect x="38" y="90" width="44" height="60" rx="2" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.3)"
+            stroke-width="0.5" />
+          <text x="60" y="125" text-anchor="middle" fill="rgba(201,168,76,0.6)" font-size="10" font-family="serif"
+            letter-spacing="3">SKS</text>
+          <rect x="30" y="170" width="60" height="8" rx="2" fill="rgba(201,168,76,0.3)" />
+        </svg>
+      </div>
+
+      <div class="prod-info-col">
+        <div class="cinzel p-bread" id="p-bread">COLLECTIONS / LUXURY / VERSAILLES</div>
+        <div class="cinzel" style="font-size:10px;color:var(--gold);letter-spacing:0.3em;">✦ <span id="p-cat">LUXURY
+            COLLECTION</span></div>
+        <h1 class="cormorant p-name" id="p-name">Versailles</h1>
+        <div class="cormorant italic p-tag" id="p-tag">"Where Paris meets the Persian Gulf"</div>
+        <div class="p-div"></div>
+        <div class="p-price jost"><span id="p-price">640 AED</span></div>
+        <div style="font-size:12px;color:var(--ivory-dim);" class="jost">Free delivery within Dubai · Gift wrapping
+          available</div>
+
+        <div style="margin-top:32px;">
+          <span class="cinzel" style="font-size:9px;color:var(--ivory-dim);letter-spacing:0.3em;">SIZE</span>
+          <div class="p-size-sel jost">
+            <div class="pill active">50ml</div>
+            <div class="pill">100ml</div>
+          </div>
+        </div>
+
+        <div class="wa-prod-cta reveal">
+          <div style="display:flex;align-items:center;gap:8px;color:#25D366;font-size:12px;" class="cinzel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.99 2.02c-5.5...z" />
+            </svg>ORDER VIA WHATSAPP
+          </div>
+          <p class="jost" style="color:var(--ivory-dim);font-size:13px;margin-top:12px;line-height:1.6;" id="p-wa-desc">
+            Click below to open WhatsApp and order Versailles directly. Our consultants will confirm availability.</p>
+          <a href="#" target="_blank" class="wa-prod-btn" id="p-wa-link">OPEN WHATSAPP TO ORDER</a>
+          <div class="wa-trust">
+            <span>🔒 Secure order</span> <span>🚀 Same-day delivery</span> <span>🎁 Gift wrapping</span>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="cinzel" style="font-size:10px;color:var(--gold);letter-spacing:0.3em;">✦ THE FRAGRANCE</div>
+          <div class="notes-pyr">
+            <div class="note-tier">
+              <div class="cinzel note-tit">TOP NOTES</div>
+              <div class="cormorant italic note-val" id="n-top">Bergamot · Neroli</div>
+            </div>
+            <div style="height:1px;border-top:1px dashed rgba(201,168,76,0.2);margin-left:12px;"></div>
+            <div class="note-tier" style="padding-left:12px;">
+              <div class="cinzel note-tit">HEART NOTES</div>
+              <div class="cormorant italic note-val" id="n-heart">Oud Assam · Rose</div>
+            </div>
+            <div style="height:1px;border-top:1px dashed rgba(201,168,76,0.2);margin-left:24px;"></div>
+            <div class="note-tier" style="padding-left:24px;">
+              <div class="cinzel note-tit">BASE NOTES</div>
+              <div class="cormorant italic note-val" id="n-base">Sandalwood · Musk</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bars reveal">
+          <div class="bar-row">
+            <div class="bar-top"><span class="cinzel">LONGEVITY</span><span class="jost" id="bar-v-1">85%</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" id="bar-f-1"></div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-top"><span class="cinzel">SILLAGE</span><span class="jost" id="bar-v-2">75%</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" id="bar-f-2"></div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-top"><span class="cinzel">VERSATILITY</span><span class="jost" id="bar-v-3">80%</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" id="bar-f-3"></div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-top"><span class="cinzel">COMPLEXITY</span><span class="jost" id="bar-v-4">90%</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" id="bar-f-4"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="occ-tags cinzel reveal" id="p-tags"></div>
+
+        <div style="margin-top:60px;" class="reveal">
+          <div class="cinzel" style="font-size:10px;color:var(--gold);letter-spacing:0.3em;">✦ THE STORY</div>
+          <div class="cormorant italic"
+            style="font-size:28px;margin:24px 0;padding-left:24px;border-left:3px solid var(--gold);" id="p-quote">
+          </div>
+          <p class="jost" style="color:var(--ivory-dim);line-height:2;font-size:15px;" id="p-story"></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      { id: "versailles", name: "Versailles", collection: "luxury", collectionLabel: "LUXURY COLLECTION", tagline: "Where Paris meets the Persian Gulf", price: 640, gradient: "linear-gradient(160deg, #0a0a0a 0%, #1a0a00 40%, #2d1500 70%, #0a0608 100%)", topNotes: "Bergamot · Neroli · Pink Pepper", heartNotes: "Oud Assam · Rose Absolute · Aged Leather", baseNotes: "Sandalwood · Ambergris · White Musk", longevity: 85, sillage: 75, versatility: 80, complexity: 90, occasions: ["EVENING", "FORMAL", "DATE NIGHT", "WINTER"], story: "Versailles was conceived on a winter evening in Paris, when the lights of the Champs-Élysées reflected in the wet stone streets. The fragrance opens with the clean brightness of Calabrian bergamot. Within twenty minutes, the transformation begins. Oud from the forests of Assam emerges — not the aggressive, medicinal oud, but a refined wood that breathes. This is not a masculine or feminine fragrance. It is simply exceptional." },
+      { id: "opera", name: "Opera", collection: "luxury", collectionLabel: "LUXURY COLLECTION", tagline: "The curtain rises. So does the scent.", price: 640, gradient: "linear-gradient(160deg, #0a0a0a 0%, #0a001a 40%, #150030 70%, #0a0a0a 100%)", topNotes: "Saffron · Cardamom · Grapefruit", heartNotes: "Iris · Violet · Vetiver", baseNotes: "Oakmoss · Tonka Bean · Patchouli", longevity: 88, sillage: 82, versatility: 70, complexity: 95, occasions: ["EVENING", "GALA", "SPECIAL OCCASIONS", "AUTUMN"], story: "An overture of saffron and cardamom. A performance that lingers long after the curtain falls. Opera is grand, poetic, and moving." },
+      { id: "louvre", name: "Louvre", collection: "luxury", collectionLabel: "LUXURY COLLECTION", tagline: "Timeless as the art it honours", price: 640, gradient: "linear-gradient(160deg, #0a0808 0%, #1a0800 40%, #2a1200 60%, #0a0a08 100%)", topNotes: "Mandarin · Aldehydes · Jasmine Bud", heartNotes: "Orris Root · Ylang Ylang · Cedarwood", baseNotes: "Vetiver · Musk · Amber", longevity: 80, sillage: 70, versatility: 90, complexity: 85, occasions: ["DAYTIME", "OFFICE", "ALL SEASONS", "GIFT"], story: "Like wandering the halls of the world's greatest museum — every turn reveals something new. Louvre is elegance mapped onto skin." },
+      { id: "marseille", name: "Marseille", collection: "luxury", collectionLabel: "LUXURY COLLECTION", tagline: "Salt air and southern light", price: 550, gradient: "linear-gradient(160deg, #040a10 0%, #001420 40%, #002030 60%, #040a0a 100%)", topNotes: "Sea Breeze · Lemon · Marine Accord", heartNotes: "Lavender · Geranium · Cedarwood", baseNotes: "Driftwood · Musk · Ambergris", longevity: 75, sillage: 70, versatility: 88, complexity: 72, occasions: ["DAYTIME", "SUMMER", "CASUAL", "TRAVEL"], story: "The Mediterranean coast in a bottle. Fresh, alive, and impossibly free." },
+      { id: "sks-v", name: "SKS V", collection: "glamour", collectionLabel: "GLAMOUR SERIES", tagline: "The fifth chapter. Bold. Unapologetic.", price: 175, gradient: "linear-gradient(160deg, #080808 0%, #0a1500 40%, #0f2000 60%, #080808 100%)", topNotes: "Grapefruit · Mint · Basil", heartNotes: "Green Tea · Bamboo · Jasmine", baseNotes: "Sandalwood · Musk · Cedar", longevity: 70, sillage: 65, versatility: 90, complexity: 65, occasions: ["DAYTIME", "OFFICE", "CASUAL", "ALL SEASONS"], story: "Fresh and alive. SKS V is the fragrance you reach for on days that demand confidence." },
+      { id: "sks-ix", name: "SKS IX", collection: "glamour", collectionLabel: "GLAMOUR SERIES", tagline: "Nine parts mystery. One part you.", price: 175, gradient: "linear-gradient(160deg, #080808 0%, #150a00 40%, #201200 60%, #080808 100%)", topNotes: "Bergamot · Cardamom · Nutmeg", heartNotes: "Oud · Amber · Rose", baseNotes: "Musk · Vetiver · Sandalwood", longevity: 78, sillage: 72, versatility: 75, complexity: 82, occasions: ["EVENING", "DATE NIGHT", "WINTER", "AUTUMN"], story: "SKS IX is for the nights you want to be remembered. Warm, deep, and compelling." }
+    ];
+
+    const svgBottle = `<svg viewBox="0 0 120 200" fill="none"><rect x="45" y="10" width="30" height="18" rx="4" fill="rgba(201,168,76,0.4)"/><rect x="50" y="28" width="20" height="20" fill="rgba(201,168,76,0.2)"/><path d="M35 48 L50 48 L70 48 L85 48 L88 70 L32 70 Z" fill="rgba(201,168,76,0.2)"/><rect x="32" y="70" width="56" height="100" rx="4" fill="rgba(201,168,76,0.15)"/><rect x="38" y="90" width="44" height="60" rx="2" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/><text x="60" y="125" text-anchor="middle" fill="rgba(201,168,76,0.6)" font-size="10" font-family="serif" letter-spacing="3">SKS</text><rect x="30" y="170" width="60" height="8" rx="2" fill="rgba(201,168,76,0.3)"/></svg>`;
+
+    const grid = document.getElementById('grid-container');
+    function renderGrid(filter = 'all') {
+      grid.innerHTML = '';
+      products.forEach((p, idx) => {
+        if (filter !== 'all' && p.collection !== filter) return;
+        const card = document.createElement('div');
+        card.className = 'card reveal visible';
+        card.style.transitionDelay = (idx * 0.1) + 's';
+        card.innerHTML = `
+      <div class="card-img-area" style="background:${p.gradient}" onclick="openProduct('${p.id}')">
+        ${svgBottle}
+      </div>
+      <div class="card-info" onclick="openProduct('${p.id}')">
+        <div class="c-badge cinzel">${p.collectionLabel}</div>
+        <div class="c-title cormorant">${p.name}</div>
+        <div class="c-desc jost">${p.topNotes.split('·')[0]} · ${p.baseNotes.split('·')[0]}</div>
+        <div class="c-div"></div>
+        <div class="c-price jost">
+          <span>${p.price} AED</span> <span class="c-arrow">→</span>
+        </div>
+      </div>
+    `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterData(cat, el) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      renderGrid(cat);
+    }
+
+    function initUI() {
+      renderGrid();
+
+      // Hero Parallax
+      const bottleWrap = document.getElementById('hero-bottle-wrap');
+      const headline = document.querySelector('.hero-content');
+      if (bottleWrap && headline && window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 2;
+          bottleWrap.style.transform = `translateX(${-x * 12}px)`;
+          headline.style.transform = `translateX(${x * 4}px)`;
+        });
+      }
+
+      // Auto-attach reveal classes to make the whole site practically breathe luxury
+      document.querySelectorAll('h1, h2, h3, p, .pillar, .wa-block, .ft-grid > div, .card, .btn, .wa-btn').forEach((el) => {
+        if (!el.classList.contains('reveal') && !el.classList.contains('reveal-scale') && !el.closest('#hero') && !el.closest('.wa-prod-cta')) {
+          el.classList.add('reveal');
+        }
+      });
+      // Images and SVG wrappers get scale reveal
+      document.querySelectorAll('img:not(#hero-bg), svg, .card-img-area').forEach(el => {
+        if (!el.classList.contains('reveal-scale') && !el.closest('#hero') && !el.closest('.wa-btn')) el.classList.add('reveal-scale');
+      });
+
+      // Luxurious Smooth Cursor with Spring Physics
+      const cur = document.getElementById('cursor');
+      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+      let curX = mouseX, curY = mouseY;
+      
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      function renderCursor() {
+        curX += (mouseX - curX) * 0.12;
+        curY += (mouseY - curY) * 0.12;
+        cur.style.left = curX + 'px';
+        cur.style.top = curY + 'px';
+        requestAnimationFrame(renderCursor);
+      }
+      renderCursor();
+      
+      document.addEventListener('mouseover', e => {
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.card') || e.target.closest('.tab') || e.target.closest('.pill')) {
+          cur.classList.add('hover');
+        } else { 
+          cur.classList.remove('hover'); 
+        }
+      });
+
+      // Nav scroll with slight dynamic blur
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+          navbar.classList.add('scrolled');
+          navbar.style.backdropFilter = `blur(${Math.min(20, window.scrollY * 0.05)}px)`;
+        } else {
+          navbar.classList.remove('scrolled');
+          navbar.style.backdropFilter = 'none';
+        }
+      });
+
+      // Parallax Effect on Elements
+      window.addEventListener('scroll', () => {
+         const scrolled = window.scrollY;
+         document.querySelectorAll('.parallax').forEach(el => {
+             const speed = el.dataset.speed || 0.1;
+             el.style.transform = `translateY(${scrolled * speed}px)`;
+         });
+         const heroBg = document.getElementById('hero-bg');
+         if(heroBg && scrolled < window.innerHeight) {
+             heroBg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.05)`;
+         }
+      });
+
+      // Staggered Reveal Observer
+      const obs = new IntersectionObserver((ents) => {
+        // Group intersections in this frame to stagger them
+        const intersecting = ents.filter(e => e.isIntersecting);
+        intersecting.forEach((e, i) => { 
+            setTimeout(() => {
+              if(e.target) e.target.classList.add('visible'); 
+            }, i * 150); // 150ms stagger between elements entering same frame
+            obs.unobserve(e.target); // play only once
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      
+      document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+      
+      // Magnetic Buttons Feature
+      document.querySelectorAll('.btn, .wa-btn, .hero-cta').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          // Reset transform nicely
+          btn.style.transform = `translate(0px, 0px)`;
+        });
+      });
+
+    }
+
+    function goHome() {
+      document.getElementById('view-product').classList.add('hidden');
+      document.getElementById('view-landing').classList.remove('hidden');
+      document.getElementById('nav-left').innerHTML = '';
+      if(document.getElementById('main-nav-links')) document.getElementById('main-nav-links').style.display = 'flex';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openProduct(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('view-landing').classList.add('hidden');
+      document.getElementById('view-product').classList.remove('hidden');
+
+      // Populate
+      document.getElementById('nav-left').innerHTML = '<a href="#" onclick="goHome()" class="cinzel" style="font-size:10px; color:var(--ivory-dim); letter-spacing:0.25em;">← COLLECTIONS</a>';
+      if(document.getElementById('main-nav-links')) document.getElementById('main-nav-links').style.display = 'none';
+
+      document.getElementById('p-vis').style.background = p.gradient;
+      document.getElementById('p-bread').innerText = `COLLECTIONS / ${p.collection.toUpperCase()} / ${p.name.toUpperCase()}`;
+      document.getElementById('p-cat').innerText = p.collectionLabel;
+      document.getElementById('p-name').innerText = p.name;
+      document.getElementById('p-tag').innerText = `"${p.tagline}"`;
+      document.getElementById('p-price').innerText = `${p.price} AED`;
+      document.getElementById('n-top').innerText = p.topNotes;
+      document.getElementById('n-heart').innerText = p.heartNotes;
+      document.getElementById('n-base').innerText = p.baseNotes;
+
+      // Bars
+      setTimeout(() => {
+        document.getElementById('bar-f-1').style.width = p.longevity + '%'; document.getElementById('bar-v-1').innerText = p.longevity + '%';
+        document.getElementById('bar-f-2').style.width = p.sillage + '%'; document.getElementById('bar-v-2').innerText = p.sillage + '%';
+        document.getElementById('bar-f-3').style.width = p.versatility + '%'; document.getElementById('bar-v-3').innerText = p.versatility + '%';
+        document.getElementById('bar-f-4').style.width = p.complexity + '%'; document.getElementById('bar-v-4').innerText = p.complexity + '%';
+      }, 100);
+
+      // Tags
+      document.getElementById('p-tags').innerHTML = p.occasions.map(o => `<div class="o-tag">${o}</div>`).join('');
+      document.getElementById('p-quote').innerText = `"To wear ${p.name} is to understand what it means to arrive."`;
+      document.getElementById('p-story').innerText = p.story;
+
+      // WA Link
+      const waUrl = `https://wa.me/971500000000?text=${encodeURIComponent(`Hello, I'm interested in ordering ${p.name} (100ml) — AED ${p.price}. Please assist.`)}`;
+      document.getElementById('p-wa-link').href = waUrl;
+
+      window.scrollTo({ top: 0 });
+    }
+
+    function toggleMenu() { document.getElementById('mob-menu').classList.toggle('open'); }
+
+    function initParticles() {
+      const canvas = document.getElementById('hero-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.reset();
+          this.y = Math.random() * height; // initial spread
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = height + Math.random() * 100; // spawn below view
+          this.size = Math.random() * 2 + 0.5; // subtle size varied
+          this.speedY = Math.random() * 0.4 + 0.1; // slow upward drift
+          this.speedX = (Math.random() - 0.5) * 0.2; // slight sway
+          this.opacity = Math.random() * 0.6 + 0.1;
+        }
+        update() {
+          this.y -= this.speedY;
+          this.x += this.speedX;
+          if (this.y < -10) this.reset();
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201, 168, 76, ${this.opacity})`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < 80; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    initParticles();
+    initUI();
+  </script>
+</body>
+
+</html>
