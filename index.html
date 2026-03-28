@@ -33,7 +33,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      cursor: none !important;
     }
 
     html {
@@ -61,28 +60,7 @@
       color: inherit;
     }
 
-    /* Custom Cursor */
-    .cursor {
-      width: 10px;
-      height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, background 0.4s ease;
-      left: 50%;
-      top: 50%;
-    }
 
-    .cursor.hover {
-      width: 50px;
-      height: 50px;
-      opacity: 0.15;
-      background: var(--ivory);
-      mix-blend-mode: difference;
-    }
 
     .noise {
       position: fixed;
@@ -241,18 +219,7 @@
     }
 
     .view.hidden {
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      transform: translateY(20px);
-    }
-
-    .view.hidden * {
-      visibility: hidden;
+      display: none;
     }
 
     /* Reveal Animations - Luxurious */
@@ -1213,7 +1180,7 @@
 <body>
 
   <div class="noise"></div>
-  <div class="cursor" id="cursor"></div>
+
 
   <!-- Mobile Menu -->
   <div id="mob-menu" class="cormorant">
@@ -1614,32 +1581,7 @@
         if (!el.classList.contains('reveal-scale') && !el.closest('#hero') && !el.closest('.wa-btn')) el.classList.add('reveal-scale');
       });
 
-      // Luxurious Smooth Cursor with Spring Physics
-      const cur = document.getElementById('cursor');
-      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-      let curX = mouseX, curY = mouseY;
-      
-      document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      });
-      
-      function renderCursor() {
-        curX += (mouseX - curX) * 0.12;
-        curY += (mouseY - curY) * 0.12;
-        cur.style.left = curX + 'px';
-        cur.style.top = curY + 'px';
-        requestAnimationFrame(renderCursor);
-      }
-      renderCursor();
-      
-      document.addEventListener('mouseover', e => {
-        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.card') || e.target.closest('.tab') || e.target.closest('.pill')) {
-          cur.classList.add('hover');
-        } else { 
-          cur.classList.remove('hover'); 
-        }
-      });
+
 
       // Nav scroll with slight dynamic blur
       const navbar = document.getElementById('navbar');
@@ -1742,6 +1684,12 @@
       document.getElementById('p-wa-link').href = waUrl;
 
       window.scrollTo({ top: 0 });
+
+      // Trigger reveals for product page elements immediately
+      setTimeout(() => {
+        const prodEls = document.querySelectorAll('#view-product .reveal, #view-product .reveal-scale');
+        prodEls.forEach(el => el.classList.add('visible'));
+      }, 50);
     }
 
     function toggleMenu() { document.getElementById('mob-menu').classList.toggle('open'); }
